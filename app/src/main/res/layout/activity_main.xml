@@ -1,59 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <SearchView
-        android:id="@+id/search_view"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.moralabs.istegelsin.presentation.MainViewModel" />
+    </data>
+    
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
-        android:layout_height="@dimen/search_view_height"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="@dimen/medium_up_margin"
-        android:layout_marginEnd="@dimen/medium_up_margin"
-        android:layout_marginTop="@dimen/small_margin"/>
+        android:layout_height="match_parent"
+        tools:context=".presentation.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categories_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/categories_recycler_height"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_view"
-        android:layout_marginStart="@dimen/medium_up_margin"
-        android:layout_marginTop="@dimen/small_margin"/>
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_view_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/medium_up_margin"
+            android:layout_marginEnd="@dimen/medium_up_margin"
+            android:layout_marginTop="@dimen/small_margin"/>
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/categories_recycler"
-        android:layout_marginTop="@dimen/ex_small_margin"
-        android:background="#DFDBDB" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categories_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/categories_recycler_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view"
+            android:layout_marginStart="@dimen/medium_up_margin"
+            android:layout_marginTop="@dimen/small_margin"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sub_categories_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/sub_categories_recycler_height"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider"
-        android:layout_marginStart="@dimen/large_margin"
-        android:layout_marginTop="@dimen/ex_small_margin"/>
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/categories_recycler"
+            android:layout_marginTop="@dimen/ex_small_margin"
+            android:background="#DFDBDB" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/products_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sub_categories_recycler"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/medium_margin"
-        android:layout_marginStart="@dimen/large_margin"
-        android:layout_marginEnd="@dimen/large_margin" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sub_categories_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sub_categories_recycler_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginTop="@dimen/ex_small_margin"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/products_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sub_categories_recycler"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginStart="@dimen/large_margin"
+            android:layout_marginEnd="@dimen/large_margin" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

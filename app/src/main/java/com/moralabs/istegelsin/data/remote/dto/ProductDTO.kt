@@ -7,5 +7,5 @@ data class ProductDTO (
     @SerializedName("name") var name: String? = null,
     @SerializedName("imageUrl") var imageUrl: String? = null,
     @SerializedName("price") var price: Double? = null,
-    @SerializedName("promotionDiscountPercentage") var promotionDiscountPercentage: Double? = null,
+    @SerializedName("promotionDiscountPercentage") var promotionDiscountPercentage: Double? = null
 )
