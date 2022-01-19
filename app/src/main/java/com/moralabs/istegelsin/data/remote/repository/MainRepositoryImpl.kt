@@ -9,7 +9,7 @@ class MainRepositoryImpl(private var mainApi: MainApi): MainRepository {
     override suspend fun getCategories(categoryId: String): List<Category> {
         val response = mainApi.getCategories(
             "BFD7CFDB-F825-4D9A-EFD2-08D9BF1326C6",
-            "CA3CCECF-B93B-41A6-BD84-F7CBB515AA54",
+            "519a2bd1-6055-4f85-33ee-08d9d10dc12e",
             categoryId)
 
         if (response.isSuccessful){

@@ -2,8 +2,12 @@ package com.moralabs.istegelsin.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.moralabs.istegelsin.databinding.ActivityMainBinding
+import com.moralabs.istegelsin.domain.entity.Category
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -12,14 +16,20 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val mainViewModel: MainViewModel = get()
-    private val mList = mutableListOf<Any>()
+    private val mList = mutableListOf<Category>()
+    private lateinit var categoryRecycler: RecyclerView
+    private lateinit var categoryAdapter: CategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /*
         binding.viewModel = mainViewModel
+        categoryRecycler = binding.categoriesRecycler
+
+         */
 
         lifecycleScope.launch {
             mainViewModel.mainState.collect { mainUiState ->
@@ -28,12 +38,22 @@ class MainActivity : AppCompatActivity() {
                         val categoryList = mutableListOf<CategoryList>()
 
                         mainUiState.mainEntity.categories.forEachIndexed { index, category ->
-                            categoryList.add(CategoryList(mutableListOf(category)))
+//                            categoryList.add(CategoryList(mutableListOf(category)))
+                            mList.add(category)
                         }
 
-                        mList.addAll(categoryList)
+//                        mList.addAll(categoryList)
 
                         println(mList)
+
+                        binding.categoriesRecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.HORIZONTAL, false)
+                        binding.categoriesRecycler.adapter = CategoryAdapter(mList)
+
+                        /*
+                        categoryRecycler.layoutManager = LinearLayoutManager(applicationContext)
+                        categoryAdapter = CategoryAdapter(mList)
+
+                         */
 
                     }
                 }
