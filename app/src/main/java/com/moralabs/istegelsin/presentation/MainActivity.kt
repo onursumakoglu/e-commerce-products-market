@@ -22,24 +22,16 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = mainViewModel
 
         lifecycleScope.launch {
-            println("başarılı3")
             mainViewModel.mainState.collect { mainUiState ->
-                println("başarılı2")
-                println(mainUiState)
                 when(mainUiState) {
                     is MainUiState.Success -> {
+                        val categoryList = mutableListOf<CategoryList>()
 
-                        println("başarılı")
-
-                        val productList = mutableListOf<ProductList>()
-
-                        mainUiState.mainEntity.products.forEachIndexed { index, product ->
-                            productList.add(ProductList(mutableListOf(product)))
+                        mainUiState.mainEntity.categories.forEachIndexed { index, category ->
+                            categoryList.add(CategoryList(mutableListOf(category)))
                         }
 
-
-
-                        mList.addAll(productList)
+                        mList.addAll(categoryList)
 
                         println(mList)
 
@@ -49,6 +41,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         mainViewModel.getProductList()
+
+
+
+        /*
+        fragment_home_main_page_walkthroughs_and_hints.recycler.bind<ListItemTipBinding, Tip>(
+            owner = activity!!,
+            data = DataStorageService.shared.tips.featured,
+            layoutId = R.layout.list_item_tip,
+            modelId = BR.model,
+            isInfinite = false
+        ) { activity?.openTipActivity(it.id) }
+
+         */
 
     }
 
