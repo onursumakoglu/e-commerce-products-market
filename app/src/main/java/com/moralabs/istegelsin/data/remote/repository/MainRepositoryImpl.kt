@@ -1,16 +1,15 @@
 package com.moralabs.istegelsin.data.remote.repository
 
+import com.moralabs.istegelsin.data.remote.api.DetailsRequest
 import com.moralabs.istegelsin.data.remote.api.MainApi
 import com.moralabs.istegelsin.domain.entity.Category
 import com.moralabs.istegelsin.domain.entity.Product
 
 class MainRepositoryImpl(private var mainApi: MainApi): MainRepository {
 
-    override suspend fun getCategories(categoryId: String): List<Category> {
-        val response = mainApi.getCategories(
-            "BFD7CFDB-F825-4D9A-EFD2-08D9BF1326C6",
-            "519a2bd1-6055-4f85-33ee-08d9d10dc12e",
-            categoryId)
+    override suspend fun getCategories(): List<Category> {
+
+        val response = mainApi.getCategories()
 
         if (response.isSuccessful){
 
@@ -29,5 +28,10 @@ class MainRepositoryImpl(private var mainApi: MainApi): MainRepository {
         return listOf()
 
     }
+
+    override suspend fun getProducts(): List<Product> {
+        TODO("Not yet implemented")
+    }
+
 
 }

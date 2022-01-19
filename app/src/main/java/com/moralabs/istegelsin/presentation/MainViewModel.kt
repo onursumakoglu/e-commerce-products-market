@@ -14,7 +14,7 @@ class MainViewModel(private val mainUseCase: MainUseCase): ViewModel() {
     private val uiState: MutableStateFlow<MainUiState> = MutableStateFlow(MainUiState.Idle)
     val mainState: StateFlow<MainUiState> = uiState
 
-    fun getProductList() {
+    fun getLists() {
         viewModelScope.launch {
             mainUseCase.starProcess()
                 .onStart {
@@ -25,8 +25,12 @@ class MainViewModel(private val mainUseCase: MainUseCase): ViewModel() {
                         is BaseResult.Success -> uiState.value = MainUiState.Success(baseResult.data)
                     }
                 }
+
+
+
         }
     }
+
 }
 
 sealed class MainUiState {

@@ -10,7 +10,6 @@
             type="com.moralabs.istegelsin.domain.entity.Category" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="@dimen/category_height">
@@ -25,7 +24,8 @@
             android:gravity="center"
             android:layout_marginLeft="@dimen/medium_margin"
             android:layout_marginRight="@dimen/medium_margin"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:text="@{category.name}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

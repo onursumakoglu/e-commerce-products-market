@@ -1,4 +1,4 @@
-package com.moralabs.istegelsin.presentation
+package com.moralabs.istegelsin.presentation.category
 
 import com.moralabs.istegelsin.domain.entity.Category
 

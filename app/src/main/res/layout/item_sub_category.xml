@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="@dimen/sub_category_height"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/product_card"
+    <data>
+
+        <variable
+            name="subCategory"
+            type="com.moralabs.istegelsin.domain.entity.Category" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:elevation="2dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="@dimen/card_radius">
+        android:layout_height="@dimen/sub_category_height"
+        android:layout_marginRight="@dimen/medium_margin">
 
-        <TextView
-            android:id="@+id/sub_category_text"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/product_card"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginEnd="@dimen/small_margin"
-            android:textStyle="bold"
-            android:text="Kırmızı Et" />
+            android:layout_height="@dimen/sub_category_height"
+            app:cardCornerRadius="@dimen/card_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/sub_category_text"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/sub_category_height"
+                android:layout_marginStart="@dimen/small_margin"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="@{subCategory.name}"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

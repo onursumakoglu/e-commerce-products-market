@@ -7,5 +7,5 @@ data class CategoryDTO (
     @SerializedName("id") var id: String? = null,
     @SerializedName("parentCategoryID") var parentCategoryID: String? = null,
     @SerializedName("name") var name: String? = null,
-    @SerializedName("subcategories") var subcategories: List<*>? = null
+    @SerializedName("subcategories") var subcategories: List<Category>? = null
 )

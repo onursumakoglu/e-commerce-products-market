@@ -1,7 +1,6 @@
 package com.moralabs.istegelsin.domain.usecase
 
 import com.moralabs.istegelsin.data.remote.dto.CategoryResponse
-import com.moralabs.istegelsin.data.remote.dto.ProductResponse
 import com.moralabs.istegelsin.data.remote.repository.MainRepository
 import com.moralabs.istegelsin.domain.common.BaseResult
 import com.moralabs.istegelsin.domain.entity.MainEntity
@@ -18,7 +17,7 @@ class MainUseCase(private val mainRepository: MainRepository) {
             emit(
                 BaseResult.Success(
                     MainEntity(
-                        categories = mainRepository.getCategories(categoryId)
+                        categories = mainRepository.getCategories()
                     )
                 )
             )
