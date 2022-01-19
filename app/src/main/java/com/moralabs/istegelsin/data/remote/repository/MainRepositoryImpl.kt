@@ -8,12 +8,9 @@ import com.moralabs.istegelsin.domain.entity.Product
 class MainRepositoryImpl(private var mainApi: MainApi): MainRepository {
 
     override suspend fun getCategories(): List<Category> {
-
         val response = mainApi.getCategories()
-
         if (response.isSuccessful){
 
-            println(response.body())
 
             return response.body()?.categories?.map {
                 Category(
@@ -30,8 +27,28 @@ class MainRepositoryImpl(private var mainApi: MainApi): MainRepository {
     }
 
     override suspend fun getProducts(): List<Product> {
-        TODO("Not yet implemented")
-    }
+        val response = mainApi.getProducts(
+            DetailsRequest(
+                subCategoryID = "A0201",
+                keyword = ""
+            )
+        )
 
+        if (response.isSuccessful){
+
+            return response.body()?.products!!.map {
+                Product(
+                    id = it.id,
+                    name = it.name,
+                    imageUrl = it.imageUrl,
+                    price = it.price,
+                    promotionDiscountPercentage = it.promotionDiscountPercentage
+                )
+            } ?: listOf()
+        }
+
+        return listOf()
+
+    }
 
 }

@@ -63,7 +63,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sub_categories_recycler"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginTop="@dimen/ex_small_margin"
             android:layout_marginStart="@dimen/large_margin"
             android:layout_marginEnd="@dimen/large_margin" />
 

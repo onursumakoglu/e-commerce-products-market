@@ -9,15 +9,14 @@ import kotlinx.coroutines.flow.flow
 
 class MainUseCase(private val mainRepository: MainRepository) {
 
-    var categoryId = "A"
-
     fun starProcess(): Flow<BaseResult<MainEntity, CategoryResponse>> {
         return flow {
 
             emit(
                 BaseResult.Success(
                     MainEntity(
-                        categories = mainRepository.getCategories()
+                        categories = mainRepository.getCategories(),
+                        products = mainRepository.getProducts()
                     )
                 )
             )

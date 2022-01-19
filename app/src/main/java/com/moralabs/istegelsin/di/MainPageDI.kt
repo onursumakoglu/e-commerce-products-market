@@ -25,7 +25,6 @@ class MainPageDI {
                 interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
                 val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
-
                 val retrofit = Retrofit.Builder()
                     .baseUrl("https://apitest.pazarama.com")
                     .client(client)

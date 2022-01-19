@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.moralabs.istegelsin.databinding.ActivityMainBinding
 import com.moralabs.istegelsin.domain.entity.Category
@@ -37,10 +38,11 @@ class MainActivity : AppCompatActivity() {
                         binding.categoriesRecycler.adapter = CategoryAdapter(mCategoryList, applicationContext, binding, "category")
 
 
-//                        mainUiState.mainEntity.products.forEachIndexed { index, product ->
-//                            mProductList.add(product)
-//                        }
-
+                        mainUiState.mainEntity.products.forEachIndexed { index, product ->
+                            mProductList.add(product)
+                        }
+                        binding.productsRecycler.layoutManager = GridLayoutManager(applicationContext, 3)
+                        binding.productsRecycler.adapter = ProductAdapter( mProductList)
 
 
                     }
