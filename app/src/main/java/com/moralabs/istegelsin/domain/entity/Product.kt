@@ -5,5 +5,6 @@ data class Product (
     var name: String? = null,
     var imageUrl: String? = null,
     var price: Double? = null,
-    var promotionDiscountPercentage: Double? = null
+    var promotionDiscountPercentage: Double? = null,
+    var basket: Int? = 0
 ) : Entity()

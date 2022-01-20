@@ -15,7 +15,7 @@
         android:layout_marginRight="@dimen/medium_margin">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/product_card"
+            android:id="@+id/sub_category_card"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/sub_category_height"
             app:cardCornerRadius="@dimen/card_radius"
@@ -30,6 +30,7 @@
                 android:layout_marginEnd="@dimen/small_margin"
                 android:gravity="center"
                 android:textStyle="bold"
+                android:textColor="@color/prod_text_color"
                 android:text="@{subCategory.name}"/>
 
         </com.google.android.material.card.MaterialCardView>

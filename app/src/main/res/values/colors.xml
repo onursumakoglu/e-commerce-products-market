@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="icon_pink_color">#FF008B</color>
+    <color name="prod_text_color">#1a1b2f</color>
+    <color name="selected_sub_cat_color">#D7E0FF</color>
+    <color name="unselected_sub_cat_color">#F2F5FB</color>
+
 </resources>

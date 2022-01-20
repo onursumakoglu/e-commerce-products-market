@@ -54,7 +54,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider"
             android:layout_marginStart="@dimen/large_margin"
-            android:layout_marginTop="@dimen/ex_small_margin"/>
+            android:layout_marginTop="@dimen/ex_small_margin"
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/products_recycler"
@@ -62,10 +63,10 @@
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sub_categories_recycler"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="@dimen/ex_small_margin"
-            android:layout_marginStart="@dimen/large_margin"
-            android:layout_marginEnd="@dimen/large_margin" />
+            android:layout_marginStart="@dimen/ex_small_margin"
+            android:layout_marginEnd="@dimen/ex_small_margin" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
     <dimen name="small_margin">10dp</dimen>
     <dimen name="ex_small_margin">5dp</dimen>
 
-    <dimen name="search_view_height">30dp</dimen>
+    <dimen name="search_view_height">35dp</dimen>
     <dimen name="categories_recycler_height">30dp</dimen>
     <dimen name="sub_categories_recycler_height">45dp</dimen>
 

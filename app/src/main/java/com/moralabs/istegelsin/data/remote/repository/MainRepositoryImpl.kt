@@ -11,7 +11,6 @@ class MainRepositoryImpl(private var mainApi: MainApi): MainRepository {
         val response = mainApi.getCategories()
         if (response.isSuccessful){
 
-
             return response.body()?.categories?.map {
                 Category(
                     id = it.id,
@@ -20,19 +19,13 @@ class MainRepositoryImpl(private var mainApi: MainApi): MainRepository {
                     subcategories = it.subcategories
                 )
             } ?: listOf()
-
         }
         return listOf()
 
     }
 
-    override suspend fun getProducts(): List<Product> {
-        val response = mainApi.getProducts(
-            DetailsRequest(
-                subCategoryID = "A0201",
-                keyword = ""
-            )
-        )
+    override suspend fun getProducts(requestBody: DetailsRequest): List<Product> {
+        val response = mainApi.getProducts(requestBody)
 
         if (response.isSuccessful){
 
@@ -42,9 +35,10 @@ class MainRepositoryImpl(private var mainApi: MainApi): MainRepository {
                     name = it.name,
                     imageUrl = it.imageUrl,
                     price = it.price,
-                    promotionDiscountPercentage = it.promotionDiscountPercentage
+                    promotionDiscountPercentage = it.promotionDiscountPercentage,
+                    basket = 0
                 )
-            } ?: listOf()
+            }
         }
 
         return listOf()

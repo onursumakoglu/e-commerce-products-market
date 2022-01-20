@@ -1,5 +1,6 @@
 package com.moralabs.istegelsin.domain.usecase
 
+import com.moralabs.istegelsin.data.remote.api.DetailsRequest
 import com.moralabs.istegelsin.data.remote.dto.CategoryResponse
 import com.moralabs.istegelsin.data.remote.repository.MainRepository
 import com.moralabs.istegelsin.domain.common.BaseResult
@@ -9,20 +10,19 @@ import kotlinx.coroutines.flow.flow
 
 class MainUseCase(private val mainRepository: MainRepository) {
 
-    fun starProcess(): Flow<BaseResult<MainEntity, CategoryResponse>> {
+    fun starProcess(requestBody: DetailsRequest): Flow<BaseResult<MainEntity, CategoryResponse>> {
         return flow {
 
             emit(
                 BaseResult.Success(
                     MainEntity(
                         categories = mainRepository.getCategories(),
-                        products = mainRepository.getProducts()
+                        products = mainRepository.getProducts(requestBody)
                     )
                 )
             )
 
         }
     }
-
 
 }

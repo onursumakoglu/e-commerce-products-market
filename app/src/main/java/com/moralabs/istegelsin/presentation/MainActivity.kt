@@ -10,6 +10,7 @@ import com.moralabs.istegelsin.databinding.ActivityMainBinding
 import com.moralabs.istegelsin.domain.entity.Category
 import com.moralabs.istegelsin.domain.entity.Product
 import com.moralabs.istegelsin.presentation.category.CategoryAdapter
+import com.moralabs.istegelsin.presentation.product.ProductAdapter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
@@ -26,24 +27,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         lifecycleScope.launch {
             mainViewModel.mainState.collect { mainUiState ->
                 when(mainUiState) {
                     is MainUiState.Success -> {
-                        mainUiState.mainEntity.categories.forEachIndexed { index, category ->
-                            mCategoryList.add(category)
+                        mainUiState.mainEntity.categories.let{
+                            if(mCategoryList.isEmpty()){
+                                mCategoryList.addAll(it)
+                                binding.categoriesRecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.HORIZONTAL, false)
+                                binding.categoriesRecycler.adapter = CategoryAdapter(mCategoryList, applicationContext, binding, "category", mainViewModel)
+                            }
                         }
-                        binding.categoriesRecycler.layoutManager = LinearLayoutManager(applicationContext, LinearLayout.HORIZONTAL, false)
-                        binding.categoriesRecycler.adapter = CategoryAdapter(mCategoryList, applicationContext, binding, "category")
 
-
+                        mProductList.clear()
                         mainUiState.mainEntity.products.forEachIndexed { index, product ->
                             mProductList.add(product)
                         }
                         binding.productsRecycler.layoutManager = GridLayoutManager(applicationContext, 3)
                         binding.productsRecycler.adapter = ProductAdapter( mProductList)
-
 
                     }
                 }
@@ -51,7 +52,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         mainViewModel.getLists()
-
     }
-
 }
