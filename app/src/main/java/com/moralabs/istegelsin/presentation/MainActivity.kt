@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         mProductList.clear()
-                        mainUiState.mainEntity.products.forEachIndexed { index, product ->
+                        mainUiState.mainEntity.products.forEachIndexed { _, product ->
                             mProductList.add(product)
                         }
                         binding.productsRecycler.layoutManager = GridLayoutManager(applicationContext, 3)
